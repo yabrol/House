@@ -41,26 +41,28 @@ public class LungNoduleActivity extends Activity {
             public void onLayoutInflated(WatchViewStub stub) {
                 lungNoduleInfo = new LungNoduleInfo(LungNoduleActivity.this);
                 mTextView = (TextView) stub.findViewById(R.id.textView);
-//                mTextView = new TextView(LungNoduleActivity.this.getApplicationContext());
                 mTextView.setText("<Low> or <High> Risk Patient?");
 
-//                mSpeechTextView = new TextView(LungNoduleActivity.this.getApplicationContext());
                 mSpeechTextView = (TextView) stub.findViewById(R.id.speechTextView);
+                mSpeechTextView.setText("");
 
-//                mIncorrect = new Button(LungNoduleActivity.this.getApplicationContext());
                 mIncorrect = (Button) stub.findViewById(R.id.pauseButton);
                 mIncorrect.setText("Incorrect");
                 mIncorrect.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (mTextView.getText().toString().equalsIgnoreCase("<Low> or <High> Risk Patient?")) {
-//                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
                         } else if (mTextView.getText().toString().equalsIgnoreCase("Nodule Size (mm)")) {
-//                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_NODE);
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_NODE);
                         }
                     }
                 });
-//                startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
+                mHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
+                    }
+                }, 2000);
             }
         });
     }
@@ -84,8 +86,24 @@ public class LungNoduleActivity extends Activity {
                 recognizedText = results.get(0);
                 // Display the recognized text
                 mSpeechTextView.setText(recognizedText);
-                noduleSize = Integer.getInteger(recognizedText).intValue();
+                try{
+                noduleSize = Integer.parseInt(recognizedText);
+                } catch(NumberFormatException e){
+                    mSpeechTextView.setText("try again");
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            //wait if they click button
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_NODE);
+                        }
+                    }, 1000);
+                }
                 Log.d(TAG,"nodule size:" + noduleSize);
+                mHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        //wait if they click button
+                        mTextView.setText(lungNoduleInfo.getResult(isLowRisk, noduleSize));
+                    }
+                }, 2000);
             }
         }else if(requestCode == SPEECH_RECOGNIZER_REQUEST_CODE_RISK){
             // When the speech recognizer finishes its work, Android invokes this callback with requestCode equal to SPEECH_RECOGNIZER_REQUEST_CODE
@@ -96,22 +114,33 @@ public class LungNoduleActivity extends Activity {
                 mSpeechTextView.setText(recognizedText);
                 if(recognizedText.equalsIgnoreCase("low")){
                     isLowRisk = true;
+                    mTextView.setText("Nodule Size (mm)");
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            //wait if they click button
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_NODE);
+                        }
+                    }, 2000);
                 }else if(recognizedText.equalsIgnoreCase("high")){
                     isLowRisk = false;
+                    mTextView.setText("Nodule Size (mm)");
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            //wait if they click button
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_NODE);
+                        }
+                    }, 2000);
                 }else{
                     mSpeechTextView.setText("try again");
-                    startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
+                    mHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            //wait if they click button
+                            startSpeechRecognition(SPEECH_RECOGNIZER_REQUEST_CODE_RISK);
+                        }
+                    }, 1000);
                 }
             }
         }
-//        mHandler.postDelayed(new Runnable() {
-//            public void run() {
-//                //wait if they click button
-//                if(requestCode == SPEECH_RECOGNIZER_REQUEST_CODE_NODE){
-//                    lungNoduleInfo.getResult(isLowRisk,noduleSize);
-//                }
-//            }
-//        }, 3000);
         super.onActivityResult(requestCode, resultCode, data);
     }
 

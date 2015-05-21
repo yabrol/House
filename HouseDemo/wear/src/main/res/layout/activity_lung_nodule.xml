@@ -7,4 +7,5 @@
     app:rectLayout="@layout/rect_activity_lung_nodule"
     app:roundLayout="@layout/round_activity_lung_nodule"
     tools:context="com.yukti.housedemo.LungNoduleActivity"
-    tools:deviceIds="wear"></android.support.wearable.view.WatchViewStub>
+    tools:deviceIds="wear"
+    android:keepScreenOn="true"></android.support.wearable.view.WatchViewStub>
