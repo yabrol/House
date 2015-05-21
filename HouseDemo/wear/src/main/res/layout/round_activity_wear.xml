@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".WearActivity" tools:deviceIds="wear_round"
+    android:id="@+id/wearLayout">
+
+    <TextView android:id="@+id/text" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_round"
+        android:layout_above="@+id/lungNoduleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lung Nodule"
+        android:id="@+id/lungNoduleButton"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetal Demise"
+        android:id="@+id/fetalDemiseButton"
+        android:layout_below="@+id/lungNoduleButton"
+        android:layout_alignStart="@+id/lungNoduleButton" />
+
+</RelativeLayout>

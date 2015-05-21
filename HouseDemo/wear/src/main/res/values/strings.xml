@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HouseDemo</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_fetal_demise">FetalDemiseActivity</string>
+    <string name="title_activity_lung_nodule">LungNoduleActivity</string>
+</resources>

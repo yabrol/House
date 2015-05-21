@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Options_X">
+        <item>Nodule_Size</item>
+    </string-array>
+
+    <string-array name="Options_Y">
+        <item>Low_Risk_Patient</item>
+        <item>High_Risk_Patient</item>
+    </string-array>
+
+    <string-array name="Nodule_Size">
+        <item>less than 4</item>
+        <item>4-6</item>
+        <item>6-8</item>
+        <item>greater than 8</item>
+    </string-array>
+
+    <string-array name="Low_Risk_Patient">
+        <item>No follow up needed</item>
+        <item>Follow up at CT at 12 months. If unchanged, no further follow up</item>
+        <item>Initial follow up CT at 6-12 month. Then at 18-24 month if no change</item>
+        <item>Follow up CT at 3, 9, &amp; 24 month, dynamic contrast-enhanced CT, PET &amp;/or biopsy </item>
+    </string-array>
+
+    <string-array name="High_Risk_Patient">
+        <item>Follow up at CT at 12 months. If unchanged, no further follow up</item>
+        <item>Initial follow up CT at 6-12 month. Then at 18-24 month if no change</item>
+        <item>Initial follow up CT at 3-6 month. Then at 9-12 &amp; 24 month if no change</item>
+        <item>Follow up CT at 3, 9, &amp; 24 month, dynamic contrast-enhanced CT, PET &amp;/or biopsy </item>
+    </string-array>
+
+</resources>
