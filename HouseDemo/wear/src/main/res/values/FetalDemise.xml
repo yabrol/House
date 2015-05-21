@@ -1,4 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <string-array name="Measurements">
+        <item>Fetal Heart Beat</item>
+        <item>CRL</item>
+        <item>Fetal Pole Present</item>
+        <item>MSD</item>
+        <item>Yolk Sac Present</item>
+        <item>Embryo Present</item>
+        <item>Fetal Pole Measurement To MSD</item>
+        <item>Serial Scan Growth</item>
+        <item>Irregular Gestation Sac</item>
+        <item>Low Position Gestational Sac</item>
+    </string-array>
+    
+    <string-array name="Fetal_Heart_Beat">
+        <item name="YES">Fetal Pole Present</item>
+        <item name="NO">CRL</item>
+    </string-array>
+    
+    <string-array name="CRL">
+        <item name="7">Non-viable</item>
+        <!-- >= 7-->
+        <item name="6">Fetal Pole Present</item>
+        <!-- <7-->
+    </string-array>
+    
+    <string-array name="Fetal_Pole_Present">
+        <item name="YES">Fetal Pole Measurement To MSD</item>
+        <item name="NO">Embryo Present</item>
+    </string-array>
+    
+    <string-array name="MSD">
+        <item name="8">Suspicion</item>
+        <!-- >8-->
+        <item name="7">Irregular Gestation Sac</item>
+        <!-- <=8-->
+        <item name="25">Non-viable</item>
+        <!-- >25-->
+        <item name="24">Serial Scan Growth</item>
+        <!-- <=25-->
+    </string-array>
+    
+    <string-array name="Yolk_Sac_Present">
+        <item name="YES">END</item>
+        <item name="NO">MSD</item>
+    </string-array>
+
+    <string-array name="Embryo_Present">
+        <item name="YES">Suspicion</item>
+        <item name="NO">MSD</item>
+    </string-array>
+
+    <string-array name="Fetal_Pole_Measurement_To_MSD">
+        <item name="YES">Non-viable</item>
+        <item name="NO">Serial Scan Growth</item>
+    </string-array>
+
+    <string-array name="Serial_Scan_Growth">
+        <item name="YES">Irregular Gestation Sac</item>
+        <item name="NO">Non-viable</item>
+    </string-array>
+
+    <string-array name="Irregular_Gestation_Sac">
+        <item name="YES">Suspicion</item>
+        <item name="NO">Low Position Gestational Sac</item>
+    </string-array>
+
+    <string-array name="Low_Position_Gestational_Sac">
+        <item name="YES">Suspicion</item>
+        <item name="NO">Yolk Sac Present</item>
+    </string-array>
+
 
 </resources>
